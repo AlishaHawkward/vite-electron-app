@@ -1,0 +1,33 @@
+#welcome {
+  text-align: center;
+  color: rgb(233, 233, 233);
+  .title {
+    margin: 64px 0 24px 0;
+    font-size: 22px;
+  }
+  .links {
+    display: table;
+    margin: 20px 10%;
+    width: 80%;
+    p {
+      display: table-row;
+      width: 100%;
+      a {
+        display: table-cell;
+        width: 50%;
+        padding: 4px 12px;
+        color:  rgba(72, 72, 196);
+        text-decoration: none;
+        &:first-child {
+          text-align: right;
+        }
+        &:last-child {
+          text-align: left;
+        }
+        &:hover {
+          color: rgba(92, 92, 216);
+        }
+      }
+    }
+  }
+}
