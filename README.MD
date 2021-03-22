@@ -45,8 +45,10 @@ Clean dist dir: npm run clean
 
 ## What you need to know
 
-1. Project author doesn't ensure the stability of the project at moment.
+1. Main process & Render process use ipcRenderer to communicate.
 
-2. You can use and distribute this project anywhere, but you should keep the original README.MD.
+2. Project author doesn't ensure the stability of the project at moment.
 
-3. Enjoy it!
+3. You can use and distribute this project anywhere, but you should keep the original README.MD.
+
+4. Enjoy it!

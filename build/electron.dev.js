@@ -8,12 +8,12 @@ let watch;
 let signal;
 
 const input_dir = path.join(__dirname, '../src/background.ts');
-// const output_dir = path.join(__dirname, '../dist/background.js');
-const output_dir = path.join(os.tmpdir(), './electron.dev.js');
+const input_preload = path.join(__dirname, '../src/preload.ts');
+const output_dir = path.join(__dirname, '../dist/background.js');
 const common_wait = 1000;
 
 esbuild.build({
-  entryPoints: [input_dir],
+  entryPoints: [input_dir, input_preload],
   bundle: false,
   format: 'cjs',
   platform: 'node',
@@ -29,7 +29,7 @@ esbuild.build({
       }
     },
   },
-  outfile: output_dir,
+  outdir: path.join(output_dir, '../'),
 }).then((res) => {
   // wait for vite-react build.
   setTimeout(() => {

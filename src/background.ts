@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 
 function createWindow() {
@@ -6,8 +6,8 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true,
-      enableRemoteModule: true,
+      nodeIntegration: false,
+      preload: path.join(__dirname, './preload.js'),
     },
   });
 
@@ -30,5 +30,11 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
+  }
+});
+
+ipcMain.on('request', (event, obj) => {
+  if (obj.type === 'send_msg') {
+    event.reply('response', { msg: 'Hello, react!' });
   }
 });
