@@ -1,5 +1,8 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
+import { app, BrowserWindow, ipcMain } from 'electron';
+import Controller from './service/controller';
+
+let controller: Controller;
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -16,8 +19,6 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  console.log('hello, react!');
-
   createWindow();
 
   app.on('activate', () => {
@@ -25,16 +26,13 @@ app.whenReady().then(() => {
       createWindow();
     }
   });
+
+  controller = new Controller(ipcMain);
+  controller.assign();
 });
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
-  }
-});
-
-ipcMain.on('request', (event, obj) => {
-  if (obj.type === 'send_msg') {
-    event.reply('response', { msg: 'Hello, react!' });
   }
 });

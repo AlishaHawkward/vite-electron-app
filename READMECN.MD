@@ -38,10 +38,14 @@ npm run build
 ```
 
 ### 5. 其它有用的功能
-```
-规范开发代码: npm run lint
-清空dist目录: npm run clean
-```
+规范开发代码: `npm run lint`
+清空dist目录: `npm run clean`
+
+## 和主进程进行通信
+
+1. 直接使用`window.electron.request()`方法。
+
+2. 在`preload.ts`中自定义你的通信方法。
 
 ## 注意
 

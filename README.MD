@@ -38,10 +38,14 @@ npm run build
 ```
 
 ### 5. Other useful commands.
-```
-ESLint: npm run lint
-Clean dist dir: npm run clean
-```
+ESLint: `npm run lint`
+Clean dist dir: `npm run clean`
+
+## Communicate with main process
+
+1. Use `window.electron.request()` in your render process.
+
+2. Or customize your ipc in preload.ts.
 
 ## What you need to know
 

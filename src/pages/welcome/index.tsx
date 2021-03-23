@@ -4,12 +4,16 @@ import './style.less';
 
 const Welcome = () => {
   useEffect(() => {
-    window.electron.ipc.request({
-      type: 'send_msg',
-      msg: 'Welcome page uses preload.js to communicate with main process!',
-    });
-    window.electron.ipc.response((data: object) => {
-      console.log('Welcome page received main process response!', data);
+    window.electron.request({
+      service: 'say_hello',
+      data: {
+        msg: 'this is a request method!',
+      },
+      timeout: 3000,
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.error(err);
     });
   }, []);
 
