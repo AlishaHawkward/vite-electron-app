@@ -1,14 +1,38 @@
 {
-  "name": "vite-electron",
+  "name": "vite-electron-app",
   "version": "0.0.0",
   "main": "dist/main/background.js",
+  "description": "vite-electron-app",
+  "homepage": "https://github.com/AlishaHawkward/vite-electron-app",
+  "license": "MIT",
+  "author": {
+    "name": "YoumuKonpaku",
+    "email": "kanade@acgme.cn"
+  },
+  "repository": {
+    "url": "https://github.com/AlishaHawkward/vite-electron-app.git"
+  },
+  "build": {
+    "appId": "com.youmukonpaku.example",
+    "productName": "viteElectronApp",
+    "copyright": "YoumuKonpaku",
+    "files": [
+      "!node_modules",
+      "dist/main/**",
+      "dist/render/**"
+    ],
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "asar": false
+  },
   "scripts": {
     "dev": "concurrently -k -n=react,electron -c=green,blue \"npm run dev:react\" \"npm run dev:electron\"",
     "dev:react": "vite",
     "dev:electron": "node build/electron.dev.js",
     "build": "npm run build:react && npm run build:electron",
     "build:react": "vite build",
-    "build:electron": "node build/electron.build.js",
+    "build:electron": "node build/electron.build.js && electron-builder build",
     "serve:react": "vite preview",
     "clean": "rm -rf dist",
     "lint": "eslint src"

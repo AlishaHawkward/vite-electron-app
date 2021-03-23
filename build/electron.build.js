@@ -1,5 +1,4 @@
 const esbuild = require('esbuild');
-const builder = require('electron-builder');
 const path = require('path');
 const fs = require('fs');
 
@@ -23,25 +22,4 @@ esbuild.build({
     ...(localPkgJson.devDependencies || {}),
     ...(localPkgJson.peerDependencies || {})
   })
-}).then(() => {
-  build();
 });
-
-function build() {
-  builder.build({
-    config: {
-      appId: 'com.youmukonpaku.example',
-      productName: 'viteElectronApp',
-      copyright: 'YoumuKonpaku',
-      files: [
-        '!node_modules',
-        'dist/main/**',
-        'dist/render/**',
-      ],
-      electronDownload: {
-        mirror: 'https://npm.taobao.org/mirrors/electron/',
-      },
-      asar: false,
-    },
-  });
-}
