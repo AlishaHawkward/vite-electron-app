@@ -12,7 +12,7 @@ let signal;
 const input_dir = path.join(__dirname, '../src/background.ts');
 const input_preload = path.join(__dirname, '../src/preload.ts');
 const output_dir = path.join(__dirname, '../dist/main/background.js');
-const common_wait = 1000;
+const common_wait = 1000; // Don't change if no need.
 
 const common_config = {
   entryPoints: [input_dir, input_preload],
@@ -43,7 +43,7 @@ if (process.env.NODE_ENV === 'production') {
     },
     watch: {
       onRebuild: (err) => {
-        if (err) console.err('[ESBuild] Rebuild failed!');
+        if (err) console.error('[ESBuild] Rebuild failed!');
         else {
           restart();
         }
