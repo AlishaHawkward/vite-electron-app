@@ -11,39 +11,52 @@ let signal;
 
 const input_dir = path.join(__dirname, '../src/background.ts');
 const input_preload = path.join(__dirname, '../src/preload.ts');
-const output_dir = path.join(__dirname, '../dist/background.js');
+const output_dir = path.join(__dirname, '../dist/main/background.js');
 const common_wait = 1000;
 
-esbuild.build({
+const common_config = {
   entryPoints: [input_dir, input_preload],
   bundle: true,
   format: 'cjs',
   platform: 'node',
-  define: {
-    'process.env.ENV': '\'development\'',
-    'process.env.PORT': 3000,
-  },
-  watch: {
-    onRebuild: (err) => {
-      if (err) console.err('[ESBuild] Rebuild failed!');
-      else {
-        restart();
-      }
-    },
-  },
   outdir: path.join(output_dir, '../'),
   external: Object.keys({
     ...(localPkgJson.dependencies || {}),
     ...(localPkgJson.devDependencies || {}),
-    ...(localPkgJson.peerDependencies || {})
-  })
-}).then((res) => {
-  // wait for vite-react build.
-  setTimeout(() => {
-    start();
-  }, common_wait);
-  watch = res;
-});
+    ...(localPkgJson.peerDependencies || {}),
+  }),
+};
+
+if (process.env.NODE_ENV === 'production') {
+  esbuild.build({
+    ...common_config,
+    define: {
+      'process.env.ENV': '\'production\'',
+    },
+  });
+} else {
+  esbuild.build({
+    ...common_config,
+    define: {
+      'process.env.ENV': '\'development\'',
+      'process.env.PORT': 3000,
+    },
+    watch: {
+      onRebuild: (err) => {
+        if (err) console.err('[ESBuild] Rebuild failed!');
+        else {
+          restart();
+        }
+      },
+    },
+  }).then((res) => {
+    // wait for vite-react build.
+    setTimeout(() => {
+      start();
+    }, common_wait);
+    watch = res;
+  });
+}
 
 function start() {
   electron = child_process.spawn('electron', [output_dir]);

@@ -29,10 +29,10 @@
   "scripts": {
     "dev": "concurrently -k -n=react,electron -c=green,blue \"npm run dev:react\" \"npm run dev:electron\"",
     "dev:react": "vite",
-    "dev:electron": "node build/electron.dev.js",
+    "dev:electron": "NODE_ENV=development node build/electron.js",
     "build": "npm run build:react && npm run build:electron",
     "build:react": "vite build",
-    "build:electron": "node build/electron.build.js && electron-builder build",
+    "build:electron": "NODE_ENV=production node build/electron.js && electron-builder build",
     "serve:react": "vite preview",
     "clean": "rm -rf dist",
     "lint": "eslint src"
