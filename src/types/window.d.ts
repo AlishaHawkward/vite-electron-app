@@ -1,4 +1,4 @@
-import { ExposedInMainWorld } from '../preload';
+import { ExposedInMainWorld } from '../main/preload';
 
 declare global {
   interface Window {

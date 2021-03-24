@@ -4,6 +4,7 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  root: './src/render',
   base: './',
   plugins: [reactRefresh(), eslintPlugin({
     include: ['./src/**/*.ts', './src/**/*.tsx'],

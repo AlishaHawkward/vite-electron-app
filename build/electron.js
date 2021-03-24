@@ -8,8 +8,8 @@ const electron = require('electron-connect').server.create({
 
 const localPkgJson = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf-8'));
 
-const input_dir = path.join(__dirname, '../src/background.ts');
-const input_preload = path.join(__dirname, '../src/preload.ts');
+const input_dir = path.join(__dirname, '../src/main/background.ts');
+const input_preload = path.join(__dirname, '../src/main/preload.ts');
 const output_dir = path.join(__dirname, '../dist/main/background.js');
 
 const common_config = {
