@@ -4,7 +4,7 @@ import './style.less';
 
 const Notfound = () => {
   return (
-    <div id="welcome">
+    <div className="not-found">
       <h1 className="title">Youmu React</h1>
       <span>404 This page has gone.</span>
     </div>
