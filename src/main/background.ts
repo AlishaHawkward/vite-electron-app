@@ -28,7 +28,6 @@ app.whenReady().then(() => {
   });
 
   controller = new Controller(ipcMain);
-  controller.assign();
 });
 
 app.on('window-all-closed', () => {
