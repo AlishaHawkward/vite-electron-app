@@ -1,7 +1,8 @@
-import { ExposedInMainWorld } from '../main/preload';
+import { IpcRenderer } from '../main/preload';
 
 declare global {
   interface Window {
-    electron: ExposedInMainWorld
+    ipcRenderer: IpcRenderer
   }
+  var ipcRenderer: IpcRenderer
 }

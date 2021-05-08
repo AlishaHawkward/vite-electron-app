@@ -4,16 +4,11 @@ import './style.less';
 
 const Welcome = () => {
   useEffect(() => {
-    window.electron.request({
-      service: 'say_hello',
-      data: {
-        msg: 'this is a request method!',
-      },
-      timeout: 3000,
-    }).then((res) => {
-      console.log(res);
-    }).catch((err) => {
-      console.error(err);
+    ipcRenderer.on('reply_hello', (e, ...args) => {
+      console.log(e, ...args);
+    });
+    ipcRenderer.send('say_hello', {
+      msg: 'this is a request method!',
     });
   }, []);
 

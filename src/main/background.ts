@@ -1,8 +1,6 @@
 import path from 'path';
-import { app, BrowserWindow, ipcMain } from 'electron';
-import Controller from './service/controller';
-
-let controller: Controller;
+import { app, BrowserWindow } from 'electron';
+import ipcSayHello from './service/sayHello';
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -27,7 +25,7 @@ app.whenReady().then(() => {
     }
   });
 
-  controller = new Controller(ipcMain);
+  ipcSayHello();
 });
 
 app.on('window-all-closed', () => {
