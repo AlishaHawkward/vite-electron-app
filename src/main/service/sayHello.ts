@@ -5,6 +5,10 @@ const sayHello = () => {
     console.log(...args)
     e.reply('reply_hello', 'hello')
   })
+
+  ipcMain.handle('invoke', (e, ...args) => {
+    return 'handled'
+  })
 }
 
 export default sayHello;

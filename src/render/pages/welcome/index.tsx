@@ -10,6 +10,9 @@ const Welcome = () => {
     ipcRenderer.send('say_hello', {
       msg: 'this is a request method!',
     });
+    ipcRenderer.invoke('invoke').then((res) => {
+      console.log(res);
+    });
   }, []);
 
   return (

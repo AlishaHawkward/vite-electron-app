@@ -43,9 +43,9 @@ Clean dist dir: `npm run clean`
 
 ## Communicate with main process
 
-1. Use `window.electron.request()` in your render process.
+1. Use `window.ipcRenderer.send()` from renderer process to main process.
 
-2. Or customize your ipc in preload.ts.
+2. Use `window.ipcRenderer.on()` from main process to renderer process.
 
 ## What you need to know
 
