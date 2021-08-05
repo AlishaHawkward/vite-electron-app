@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Welcome from '../pages/welcome';
-import Notfound from '../pages/notfound';
+import Welcome from '@/pages/welcome';
+import Notfound from '@/pages/notfound';
 
-const Router = () => {
+const Index = () => {
   return (
     <Switch>
       <Redirect from="/" to="/welcome" exact />
@@ -14,4 +14,4 @@ const Router = () => {
   );
 };
 
-export default Router;
+export default Index;
