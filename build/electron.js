@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
     ...common_config,
     define: {
       'process.env.ENV': '\'development\'',
-      'process.env.PORT': 3000,
+      'process.env.PORT': 14843,
     },
     watch: {
       onRebuild: (err) => {

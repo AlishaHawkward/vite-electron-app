@@ -8,11 +8,11 @@ Drop webpack and enjoy vite! [中文文档](https://github.com/AlishaHawkward/vi
 
 ## Dependencies
 
-1. Vite 2.1.2
-2. ESBuild 0.9.6
-3. Electron 12.0.1
-4. React 17.0.0
-5. Typescript 4.1.2
+1. Vite 2.1.4
+2. ESBuild 0.12.18
+3. Electron 13.1.8
+4. React 17.0.2
+5. Typescript 4.3.5
 
 ## Contribute
 

@@ -14,4 +14,7 @@ export default defineConfig({
     outDir: './dist/render',
     emptyOutDir: true,
   },
+  server: {
+    port: 14843,
+  },
 });

@@ -8,11 +8,11 @@
 
 ## 依赖项
 
-1. Vite 2.1.2
-2. ESBuild 0.9.6
-3. Electron 12.0.1
-4. React 17.0.0
-5. Typescript 4.1.2
+1. Vite 2.1.4
+2. ESBuild 0.12.18
+3. Electron 13.1.8
+4. React 17.0.2
+5. Typescript 4.3.5
 
 ## 使用说明
 
@@ -43,9 +43,9 @@ npm run build
 
 ## 和主进程进行通信
 
-1. 直接使用`window.electron.request()`方法。
+1. 在渲染进程中使用 `window.ipcRenderer.send()` 来向主进程发送通信。
 
-2. 在`preload.ts`中自定义你的通信方法。
+2. 在主进程中使用 `window.ipcRenderer.on()` 来接受渲染进程发送来的消息。
 
 ## 注意
 
