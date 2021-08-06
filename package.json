@@ -16,6 +16,15 @@
     "appId": "com.youmukonpaku.example",
     "productName": "viteElectronApp",
     "copyright": "YoumuKonpaku",
+    "mac": {
+      "icon": "build/icons/mac/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/win/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons/png/512x512.png"
+    },
     "files": [
       "!node_modules",
       "dist/main/**",

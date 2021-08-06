@@ -7,7 +7,7 @@ const Index = () => {
   return (
     <div className="welcome">
       <div className="w-header">
-        <img className="w-logo" src="/assets/logo.png" />
+        <img className="w-logo" src="logo.png" />
         <span className="w-info">Hello, react!</span>
       </div>
       <div className="w-main">
