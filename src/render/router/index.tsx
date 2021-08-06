@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Welcome from '@/pages/welcome';
+import ExampleIpcRenderer from '@/pages/example/ipcrenderer';
 import Notfound from '@/pages/notfound';
 
 const Index = () => {
@@ -9,6 +10,7 @@ const Index = () => {
     <Switch>
       <Redirect from="/" to="/welcome" exact />
       <Route path="/welcome" component={Welcome} exact />
+      <Route path="/example/ipcrenderer" component={ExampleIpcRenderer} exact />
       <Route path="*" component={Notfound} />
     </Switch>
   );

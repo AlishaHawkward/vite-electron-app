@@ -19,11 +19,11 @@ const Index = () => {
         }, {
           text: `Location: ${location.pathname}`,
         }, {
-          text: `Time: ${new Date()}`,
+          text: `Time: ${new Date().toString()}`,
         }, {
           text: <a href="/">Get Back!</a>,
         }],
-        footer: 'Vite React App',
+        footer: 'Vite Electron App',
       }}
       />
     </div>

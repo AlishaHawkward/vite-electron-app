@@ -1,41 +1,26 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './style.less';
 
 const Index = () => {
-  const [messageQueue, setMessageQueue] = useState<string[]>([]);
-
-  const messageQueueRef = useRef<string[]>([]);
-
-  useEffect(() => {
-    messageQueueRef.current = messageQueue;
-  }, [messageQueue]);
-
-  useEffect(() => {
-    ipcRenderer.on('reply_hello', (e, ...args) => {
-      console.log(e, ...args);
-      messageQueueRef.current.push(`MSG_RECEIVED: ${[e, ...args].join(', ')}`);
-      setMessageQueue([...messageQueueRef.current]);
-    });
-    ipcRenderer.send('say_hello', {
-      msg: 'this is a request method!',
-    });
-    setMessageQueue(['MSG_SEND: this is a request method!']);
-    ipcRenderer.invoke('invoke').then((res) => {
-      console.log(res);
-      messageQueueRef.current.push(`MSG_RECEIVED: ${res}`);
-      setMessageQueue([...messageQueueRef.current]);
-    });
-  }, []);
-
   return (
     <div className="welcome">
-      <h1 className="title">Hello, react!</h1>
-      <p>This page is powered by vite, electron and react!</p>
-      <p>typescript and esbuild are also used for development!</p>
-      {messageQueue.map((v) => (
-        <p>{v}</p>
-      ))}
+      <div className="w-header">
+        <img className="w-logo" src="/assets/logo.png" />
+        <span className="w-info">Hello, react!</span>
+      </div>
+      <div className="w-main">
+        <p className="w-text-primary">This page is powered by vite, electron and react!</p>
+        <p className="w-text-normal">typescript and esbuild are also used for development!</p>
+        <p className="w-text-normal">Time: {new Date().toString()}</p>
+        <p>
+          <Link to="/example/ipcrenderer">ipcRenderer example</Link>
+        </p>
+      </div>
+      <div className="w-footer">
+        <p className="w-text">Vite Electron App</p>
+      </div>
     </div>
   );
 };

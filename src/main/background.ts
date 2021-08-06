@@ -20,15 +20,18 @@ app.whenReady().then(() => {
   createWindow();
 
   app.on('activate', () => {
+    // If app is active but no window found, reinit window.
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
     }
   });
 
+  // ipcMain & ipcRenderer example handle function.
   ipcSayHello();
 });
 
 app.on('window-all-closed', () => {
+  // If platform is not darwin, quit the app.
   if (process.platform !== 'darwin') {
     app.quit();
   }
