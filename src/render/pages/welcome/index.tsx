@@ -17,6 +17,9 @@ const Index = () => {
         <p>
           <Link to="/example/ipcrenderer">ipcRenderer example</Link>
         </p>
+        <p>
+          <Link to="/example/request">request example</Link>
+        </p>
       </div>
       <div className="w-footer">
         <p className="w-text">Vite Electron App</p>

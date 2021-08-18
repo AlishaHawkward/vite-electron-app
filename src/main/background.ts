@@ -1,6 +1,7 @@
 import path from 'path';
 import { app, BrowserWindow } from 'electron';
 import ipcSayHello from './service/sayHello';
+import router from './controller';
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -28,6 +29,9 @@ app.whenReady().then(() => {
 
   // ipcMain & ipcRenderer example handle function.
   ipcSayHello();
+
+  // ajax request controller.
+  router();
 });
 
 app.on('window-all-closed', () => {

@@ -36,6 +36,9 @@ const Index = () => {
       {messageQueue.map((v) => (
         <p>{v}</p>
       ))}
+      <p>
+        <a href="/">Back</a>
+      </p>
     </div>
   );
 };
